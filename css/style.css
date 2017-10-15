@@ -1,0 +1,22 @@
+body {
+    background-image: url("../images/bg2.jpg");
+    background-size: 1180px;
+    background-position: center -70px;
+    background-repeat: no-repeat;
+}
+.border {
+    border: 1px solid gray;
+}
+.container {
+    margin-top: 10px;
+    text-align: center;
+}
+h1 {
+    margin: 50px;
+}
+.list-group {
+    width: 100%;
+}
+.input-group {
+    margin-bottom: 5px;
+}
