@@ -1,4 +1,4 @@
-let addTask = document.getElementById('addTask');
+let addTask = document.getElementById('addTask'); // button
 let inputTask = document.getElementById('inputTask');
 let taskList = document.getElementById('taskList');
 
@@ -7,11 +7,17 @@ let key = 'myTask';
 let tasks = [];
 if(localStorage.getItem(key) !== null){
     tasks = JSON.parse(localStorage.getItem(key));
-    console.log(tasks);
     createTask();
 }
 
-addTask.onclick = function () {
+addTask.onclick = renderTask;
+inputTask.onkeydown = function(e){
+    if (e.key === "Enter") {
+        return renderTask();
+    }
+};
+
+function renderTask() {
     if(inputTask.value){
         writeToLocalStorage();
         createTask();
@@ -20,7 +26,7 @@ addTask.onclick = function () {
     } else {
         inputTask.placeholder = "The field can't be empty!";
     }
-};
+}
 
 function writeToLocalStorage(){
     let temp = {};
@@ -55,19 +61,4 @@ for(let k of remove){
         }
         e.target.remove();
     })
-}
-
-for(let j in tasks){
-    if(tasks[j].check !== true && j.innerHTML === tasks[j].task){
-        console.log(j);
-    }
-}
-
-function removeTask(){
-    let remove = document.querySelectorAll('.outTask');
-    for(let key in tasks){
-        if(tasks[key].check !== true){
-            out += `<li class="list-group-item list-group-item-action outTask">${tasks[key].task}</li>`;
-        }
-    }
 }
