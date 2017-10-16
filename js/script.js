@@ -47,15 +47,10 @@ function createTask(){
 
 let remove = document.querySelectorAll('.outTask');
 for(let k of remove){
-    console.log(k.innerHTML);
     k.addEventListener('click', function (e) {
-        console.log(e.target);
         for(let j in tasks){
             if(tasks[j].check !== true && k.innerHTML === tasks[j].task){
-                console.dir(j);
                 let a = tasks.splice(j, 1);
-                console.log(a);
-                console.log(tasks);
                 localStorage.setItem(key, JSON.stringify(tasks));
             }
         }
